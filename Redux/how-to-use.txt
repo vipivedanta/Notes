@@ -1,0 +1,84 @@
+Source : https://medium.com/codingthesmartway-com-blog/angular-and-redux-ecd22ea53492
+Date : 13 June 2019
+
+Installing Redux
+-------------------
+	- npm install redux @angular-redux/store —save
+
+A basic store in src/app
+---------------------------
+	export interface IAppState {
+	}
+
+	- implemented using IAppState interface
+
+Basic reducer function in src/app
+---------------------------------------
+	export function rootReducer(state, action) {
+	    return state;
+	}
+
+parameter 1 : state -> previous application state
+parameter 2 : action -> represents the change which has been dispatched
+In the above, the reducer does not change anything, simply returns the state object
+
+ACTIVATE THE REDUX IN COMPONENTS , in other words import it
+-------------------------------------------------------
+ 	- import { NgRedux, NgReduxModule } from '@angular-redux/store'
+ 	- next, add NgReduxModule to the imports array of @NgModule, as usual
+
+ here's our example store object
+ --------------------------------------
+	 export interface IAppState {
+	    todos: ITodo[];
+	    lastUpdate: Date;
+	}
+	export const INITIAL_STATE: IAppState = {
+	    todos: [],
+	    lastUpdate: null
+	}
+
+so, importing the store object
+	- import { IAppState, rootReducer, INITIAL_STATE } from './store';
+
+Now, how to exactly activate the Redux store? 
+Exactly! Inject it into the AppModule constructor
+here's it
+-------------------
+	export class AppModule {
+	    constructor (ngRedux: NgRedux<IAppState>) {
+	        ngRedux.configureStore(rootReducer, INITIAL_STATE);
+	    }
+	}
+
+	- configureStore has 2 params
+		param1 : root reducer function
+		param2 : initial state of State object, that we defined
+
+Reducer function should be able to handle all the actions in the application.
+- Each action type is identified by string - 'add_to_do','remove_to_do' etc for eg
+
+export function rootReducer(state: IAppState, action): IAppState {
+	
+	switch(action.type){
+		case 'ad_to_add' :
+			return Object.assign({}, state, new state modified object)
+		case 'remove_to_do':
+			return Object.assign({}, state, object-after-todo-is-removed)
+	}	
+}
+
+Now, how the dispatcher is invoked ?
+-------------------------------------------
+something like this in the component.
+
+	constructor(private ngRedux: NgRedux<IAppState>) { }; << injecting in the constructor
+
+	clearTodos() {
+	    this.ngRedux.dispatch({type: REMOVE_ALL_TODOS}); << invoke the dispatcher function
+	  }
+
+..and ofcaurse, we need to have all the dependencies imported on the top
+
+	import { NgRedux, select } from '@angular-redux/store';
+	import { IAppState } from '../store';

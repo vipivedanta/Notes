@@ -1,0 +1,36 @@
+Source : https://medium.com/codingthesmartway-com-blog/angular-and-redux-ecd22ea53492
+Date : 13 June 2019
+
+Why redux ?
+-----------------
+ 	- passing of data b/w components is difficult
+ 	- dependency of components with data increases
+ 	- if a data state changes, manuall communication is needed  to notify other components
+
+ What is Redux ?
+ --------------------
+ 	- A predictable state container for Javascript apps
+ 	- for centralized state management
+
+ How Redux works ?
+ ----------------------
+ 	- Redux organizes application state into a single data structure, called 'Store'
+ 	- Components reads the data from the store
+ 	- Store is never directly mutated
+ 	- An action is dispatched to 'reducer' function
+ 	- Reducer function update data by combining old state & mutations defined by action
+
+ Store in depth
+ ------------------
+ 	- Store is a single javascript object
+ 	- or, a single Typescript class with a interface defined
+
+ Actions ?
+ ----------------
+ 	- JS object, taht represents something that happended
+
+ Reducers ?
+ --------------
+ 	- Defines how the state changes in response to an action
+ 	 - (imp) A reducer does not update the state, instead returns a new state object with the changes included
+ 	 - Must be a 'pure' function, ie, it should always return the same o/p if same i/p is given
