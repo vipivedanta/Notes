@@ -1,0 +1,19 @@
+ngmodule 
+	-describe how application parts fit together.
+	-atleast one ngmodule in every app ( appModule by convention)
+
+@ngModule 
+	- a decorator, identifies appModule as ngModule class
+	- takes metatdata & tells how to compile the & launch application
+
+	1) declarations - 
+			Application's lone component.
+			List of components that belong to that module.
+			this array takes only declarables(components/directives/pipes)
+			declared classes are visible to components in this module & invisible to other module components
+	2) imports - 
+			imports different modules like browserModule for browser specific services( DOM rendering/sanitization etc)
+	3) providers - 
+			the service providers(for eg, MessageService)
+	4) bootstrap - 
+			the root component that angular creates and insert into index.html
