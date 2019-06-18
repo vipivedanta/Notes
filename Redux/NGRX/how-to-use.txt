@@ -1,0 +1,53 @@
+Source : https://www.youtube.com/watch?v=f97ICOaekNU
+
+installation
+-------------
+
+npm install @ngrx/store --save
+
+Usage
+-------
+in app.module.ts
+
+import { StoreModule } from '@ngrx/store';
+import { simpleReducer } from './simple.reducer';
+
+in @ngModule imports,
+
+StoreModule.forRoot({message:simpleReducer})
+
+in simple.reducer.ts,
+-----------------------
+
+import { Action } from '@ngrx/store';
+
+export function simpleReducer(state: string = 'hello world', action: Action){
+	switch(action.type){
+
+	}
+}
+
+in app.module.ts
+-------------------
+
+import { Store } from '@ngrx/store';
+import { Observable } form 'rxjs/Observable';
+
+next, export an interface
+------------------------------
+
+export interface AppState{
+	message: String
+}
+
+in component
+-----------------
+
+constructor(private store:Store<AppState>){
+	
+}
+
+how to call 
+-----------
+
+this.store.dispatch(data_object)
