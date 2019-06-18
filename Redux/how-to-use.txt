@@ -5,7 +5,7 @@ Installing Redux
 -------------------
 	- npm install redux @angular-redux/store —save
 
-A basic store in src/app
+A basic store in src/app - may be in store.ts (as seen here https://www.youtube.com/watch?v=UEcdQR-NoNA)
 ---------------------------
 	export interface IAppState {
 	}
