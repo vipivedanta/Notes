@@ -1,0 +1,8 @@
+ Source : https://www.youtube.com/watch?v=9P5DTlg9oLc
+ Wirtten : https://coursetro.com/posts/code/151/Angular-Ngrx-Store-Tutorial---Learn-Angular-State-Management
+
+
+src/models/tutorial.model.ts >> new file
+This file has an interface >> ie, an exported interface class and its attributes
+
+src/actions/tutorial.action.ts >> new file
