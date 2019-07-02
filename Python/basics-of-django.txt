@@ -1,0 +1,44 @@
+Source : https://simpleisbetterthancomplex.com/series/beginners-guide/1.11/
+
+Install python >> python --version
+then virtual environment > pip install virtualenv
+
+once virtual env is installed, go to the project folder and run 
+virtualenv venv >> this command is to create a virtual environment >> here name is venv
+
+another eg: virtualenv vipinenvironment
+
+once virtualenv is created, lets activate it
+venv\Scripts\activate >> where venv is the virtual environment
+
+to deactivate the venv, run >>  source venv\Scripts\deactivate.bat
+
+inside the venv, we install Django 
+pip install django
+
+once we install django, create a new project by running the command
+django-admin startproject myproject
+
+See the django app folder below
+
+myproject/                  <-- higher level folder
+ |-- myproject/             <-- django project folder
+ |    |-- myproject/
+ |    |    |-- __init__.py
+ |    |    |-- settings.py
+ |    |    |-- urls.py
+ |    |    |-- wsgi.py
+ |    +-- manage.py
+ +-- venv/                  <-- virtual environment folder
+
+
+ explanation
+ ------------------
+ manage.py >> is a shortcut to the django-admin command line utility
+ __init__.py >> an empty file which tells python that this folder is a python package
+ settings.py >> all of the project's configuration
+ urls.py >> deals with the routing of the appplication
+ wsgi.py >> simply a gateway interface of deployment ( we dont need to worry about this at this point of time! )
+
+ once we reach our virtual env folder, to run the django we just installed, run the command
+ >> python manage.py runserver
